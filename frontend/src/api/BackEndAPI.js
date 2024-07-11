@@ -24,6 +24,17 @@ class BackendApi {
   }
 
   // Individual API routes
+  /** Scraping function */
+
+  static async scrapeWebsite(url) {
+    try{
+      const response = await axios.get(`${BASE_URL}/scrape?url=${url}`);
+      return response.data.data;
+    } catch (error){
+      console.error("error scraping site:", error);
+      throw error;
+    }
+  }
 
   /** Get the current user. */
 

@@ -26,12 +26,12 @@ class BackendApi {
   // Individual API routes
   /** Scraping function */
 
-  static async scrapeWebsite(url) {
-    try{
-      const response = await axios.get(`${BASE_URL}/scrape?url=${url}`);
+  static async fetchStockPrice(symbol) {
+    try {
+      const response = await axios.get(`${BASE_URL}/scrape/stock-price?symbol=${symbol}`);
       return response.data.data;
-    } catch (error){
-      console.error("error scraping site:", error);
+    } catch (error) {
+      console.error('Error fetching stock price:', error);
       throw error;
     }
   }

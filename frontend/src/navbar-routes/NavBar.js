@@ -25,8 +25,8 @@ function NavBar({ logout }) {
             </div>
           </li>
           <li className="NavItem">
-            <NavLink className="nav-link" to="/jobs">
-              Jobs
+            <NavLink className="nav-link" to="/stock-price">
+              Stock Pricing
             </NavLink>
           </li>
           <li className="navItem logout dropdown"> 

@@ -1,11 +1,3 @@
-CREATE TABLE companies (
-  handle VARCHAR(25) PRIMARY KEY CHECK (handle = lower(handle)),
-  name TEXT UNIQUE NOT NULL,
-  num_employees INTEGER CHECK (num_employees >= 0),
-  description TEXT NOT NULL,
-  logo_url TEXT
-);
-
 CREATE TABLE users (
   username VARCHAR(25) PRIMARY KEY,
   password TEXT NOT NULL,
@@ -16,31 +8,46 @@ CREATE TABLE users (
   is_admin BOOLEAN NOT NULL DEFAULT FALSE
 );
 
-CREATE TABLE jobs (
-  id SERIAL PRIMARY KEY,
-  title TEXT NOT NULL,
-  salary INTEGER CHECK (salary >= 0),
-  equity NUMERIC CHECK (equity <= 1.0),
-  company_handle VARCHAR(25) NOT NULL
-    REFERENCES companies ON DELETE CASCADE
+CREATE TABLE sp500_stocks (
+    ticker VARCHAR(10) NOT NULL,
+    date DATE NOT NULL,
+    open DECIMAL(10, 2) NOT NULL,
+    high DECIMAL(10, 2) NOT NULL,
+    low DECIMAL(10, 2) NOT NULL,
+    close DECIMAL(10, 2) NOT NULL,
+    adj_close DECIMAL(10, 2) NOT NULL,
+    volume BIGINT NOT NULL,
+    PRIMARY KEY (ticker, date)
 );
 
-CREATE TABLE applications (
-  username VARCHAR(25)
-    REFERENCES users ON DELETE CASCADE,
-  job_id INTEGER
-    REFERENCES jobs ON DELETE CASCADE,
-  PRIMARY KEY (username, job_id)
+CREATE TABLE dow_stocks (
+    ticker VARCHAR(10) NOT NULL,
+    date DATE NOT NULL,
+    open DECIMAL(10, 2) NOT NULL,
+    high DECIMAL(10, 2) NOT NULL,
+    low DECIMAL(10, 2) NOT NULL,
+    close DECIMAL(10, 2) NOT NULL,
+    adj_close DECIMAL(10, 2) NOT NULL,
+    volume BIGINT NOT NULL,
+    PRIMARY KEY (ticker, date)
 );
 
-
-
-CREATE TABLE SavedStocks (
-  id SERIAL PRIMARY KEY,
-  username VARCHAR(25) NOT NULL,
-  symbol VARCHAR(25) NOT NULL,
-  FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE
+CREATE TABLE russell_stocks (
+    ticker VARCHAR(10) NOT NULL,
+    date DATE NOT NULL,
+    open DECIMAL(10, 2) NOT NULL,
+    high DECIMAL(10, 2) NOT NULL,
+    low DECIMAL(10, 2) NOT NULL,
+    close DECIMAL(10, 2) NOT NULL,
+    adj_close DECIMAL(10, 2) NOT NULL,
+    volume BIGINT NOT NULL,
+    PRIMARY KEY (ticker, date)
 );
+
+CREATE INDEX idx_sp500_stocks_date ON sp500_stocks (date);
+CREATE INDEX idx_dow_stocks_date ON dow_stocks (date);
+CREATE INDEX idx_russell_stocks_date ON russell_stocks (date);
+
 
 
 

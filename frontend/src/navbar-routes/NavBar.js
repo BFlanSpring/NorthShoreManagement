@@ -22,6 +22,7 @@ function NavBar({ logout }) {
             <div className="dropdown-content">
               <NavLink to="/dcf">DCF Analysis</NavLink>
               <NavLink to="/topmovers">Stock News</NavLink>
+              <NavLink to="/forex">Search Exchange Rate</NavLink>
             </div>
           </li>
           <li className="NavItem">

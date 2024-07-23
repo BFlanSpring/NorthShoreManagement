@@ -11,7 +11,6 @@ const User = require("../models/user");
 const { createToken } = require("../helpers/tokens");
 const userNewSchema = require("../schemas/userNew.json");
 const userUpdateSchema = require("../schemas/userUpdate.json");
-const savedStockNewSchema = require("../schemas/savedStockNew.json");
 
 const router = express.Router();
 
@@ -138,45 +137,6 @@ router.post("/:username/jobs/:id", ensureCorrectUserOrAdmin, async function (req
   }
 });
 
-router.post("/:username/savedStocks", ensureCorrectUserOrAdmin, async function (req, res, next) {
-  try {
-    const validator = jsonschema.validate(req.body, savedStockNewSchema);
-    if (!validator.valid) {
-      const errs = validator.errors.map(e => e.stack);
-      throw new BadRequestError(errs);
-    }
-
-    const { symbol, companyName } = req.body;
-    await User.addSavedStock(req.params.username, symbol, companyName);
-    return res.json({ added: { symbol, companyName } });
-  } catch (err) {
-    return next(err);
-  }
-});
-
-/** DELETE /[username]/savedStocks/:id  =>  { deleted: savedStockId }
- *
- * Authorization required: admin or same-user-as-:username
- **/
-
-router.delete("/:username/savedStocks/:id", ensureCorrectUserOrAdmin, async function (req, res, next) {
-  try {
-    const savedStockId = +req.params.id;
-    await User.removeSavedStock(req.params.username, savedStockId);
-    return res.json({ deleted: savedStockId });
-  } catch (err) {
-    return next(err);
-  }
-});
-
-router.get("/:username/savedStocks", async function (req, res, next) {
-  try {
-    const savedStocks = await User.getSavedStocks(req.params.username);
-    return res.json(savedStocks);
-  } catch (err) {
-    return next(err);
-  }
-});
 
 
 module.exports = router;

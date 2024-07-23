@@ -6,6 +6,7 @@ import ProfileForm from "../authentication/ProfileForm";
 import SignupForm from "../authentication/SignUpForm";
 import DCF from "../financial-analysis/DCF";
 import StockPriceFetcher from "../financial-analysis/StockPriceFetcher";
+import ForexDataFetcher from "../financial-analysis/ForexDataFetcher";
 
 function AppRoutes({ login, signup, authenticated, searchResults, fetchStocks, scrapeAndProcess }) { 
     console.debug(
@@ -31,7 +32,7 @@ function AppRoutes({ login, signup, authenticated, searchResults, fetchStocks, s
             <Route path="/signup" element={<SignupForm signup={signup} />} />
             <Route path="/dcf" element={<DCF />} />
             <Route path="/stock-price" element={<StockPriceFetcher />} /> {/* Add this route */}
-            
+            <Route path="/forex" element={<ForexDataFetcher/>} />
             {/* Authorized routes */}
             <Route 
                 path="/profile" 

@@ -24,6 +24,18 @@ class BackendApi {
   }
 
   // Individual API routes
+
+  static async fetchFinancialData(symbol, start, end) {
+    try {
+      const response = await axios.get(`${BASE_URL}/forex/data`, {
+        params: { symbol, start, end }
+      });
+      return response.data.data;
+    } catch (error) {
+      console.error('Error fetching financial data:', error);
+      throw error;
+    }
+  }
   /** Scraping function */
 
   static async fetchStockPrice(symbol) {
@@ -91,34 +103,7 @@ class BackendApi {
     return res.user;
   }
 
-  static async getSavedStocks(username) {
-    try {
-      const res = await this.request(`users/${username}/savedStocks`);
-      return res; // Access the savedStocks property of the response
-    } catch (err) {
-      console.error("Error fetching saved stocks:", err);
-      throw err; // Throw the error to be handled by the caller
-    }
-  }
-  
 
-  static async addSavedStock(username, symbol) {
-    let res = await this.request(
-      `users/${username}/savedStocks`,
-      { symbol },
-      "post"
-    );
-    return res.added;
-  }
-
-  static async removeSavedStock(username, savedStockId) {
-    let res = await this.request(
-      `users/${username}/savedStocks/${savedStockId}`,
-      {},
-      "delete"
-    );
-    return res.deleted;
-  }
 }
 
 

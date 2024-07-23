@@ -25,17 +25,39 @@ class BackendApi {
 
   // Individual API routes
 
-  static async fetchFinancialData(symbol, start, end) {
-    try {
-      const response = await axios.get(`${BASE_URL}/forex/data`, {
-        params: { symbol, start, end }
-      });
-      return response.data.data;
-    } catch (error) {
-      console.error('Error fetching financial data:', error);
-      throw error;
-    }
-  }
+  // static async fetchFinancialData(symbol, start, end) {
+  //   try {
+  //     const response = await axios.get(`${BASE_URL}/forex/data`, {
+  //       params: { symbol, start, end }
+  //     });
+  //     return response.data.data;
+  //   } catch (error) {
+  //     console.error('Error fetching financial data:', error);
+  //     throw error;
+  //   }
+  // }
+
+
+
+ 
+      static async fetchFinancialData(symbol, start, end) {
+        try {
+          const params = { symbol };
+          if (start && end) {
+            params.start = start;
+            params.end = end;
+          }
+          const response = await axios.get(`${BASE_URL}/forex/data`, { params });
+          return response.data.data;
+        } catch (error) {
+          console.error('Error fetching financial data:', error);
+          throw error;
+        }
+      }
+  
+
+
+
   /** Scraping function */
 
   static async fetchStockPrice(symbol) {

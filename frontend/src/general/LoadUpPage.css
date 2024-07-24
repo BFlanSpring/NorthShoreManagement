@@ -1,0 +1,76 @@
+.intro-video-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.intro-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.enter-button {
+    position: absolute;
+    width: 450px;
+    bottom: 27%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 190px 80px;
+    font-size: 28px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: transparent; 
+    color: rgba(180, 252, 255, 1);
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    text-shadow:
+        0 0 7px #449ca1,
+        0 0 10px #449ca1,
+        0 0 21px #80d4dc,
+        0 0 42px #216469,
+        0 0 82px #216469;
+    overflow: hidden; /* Hide overflow for smooth transitions */
+}
+
+.enter-button span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 1s ease; 
+    white-space: nowrap;
+}
+
+.enter-button span.hidden {
+    opacity: 0;
+}
+
+.enter-button span.visible {
+    opacity: 1;
+}
+
+.enter-button:hover .text-started {
+    transition: opacity 0.5s ease;
+    opacity: 1;
+    text-shadow:
+    0 0 10px #56d8d1,
+    0 0 20px #56d8d1,
+    0 0 30px #56d8d1,
+    0 0 40px #56d8d1,
+    0 0 50px #56d8d1;
+}
+
+.enter-button:hover .text-elevate {
+    transition: opacity 0.5s ease;
+    opacity: 0;
+    
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}

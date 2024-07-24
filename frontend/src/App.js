@@ -5,6 +5,7 @@ import NavBar from "./navbar-routes/NavBar";
 import AppRoutes from "./navbar-routes/Routes";
 import BackendApi from "./api/BackEndAPI";
 import UserContext from "./authentication/UserContext";
+import LoadUpPage from "./general/LoadUpPage";
 import { jwtDecode } from "jwt-decode";
 export const TOKEN_STORAGE_ID = "backend-token";
 
@@ -12,6 +13,7 @@ function App() {
   const [infoLoaded, setInfoLoaded] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
+  const [showLoadUpPage, setShowLoadUpPage] = useState(true);
 
   console.debug(
       "App",
@@ -86,20 +88,43 @@ function App() {
     console.log(true);
   }
 
+  const handleVideoEnd = () => {
+    setShowLoadUpPage(false); // Hide LoadUpPage and show the main content
+  };
+
 
 
 /* ----------------------------------------------------------------*/
 
 
+  // return (
+  //   <BrowserRouter>
+  //     <UserContext.Provider value={{currentUser, setCurrentUser }}>
+  //         <div className="App">
+  //           <NavBar logout={logout} />
+  //           <AppRoutes login={login} 
+  //                       signup={signup} 
+  //                       authenticated={authenticated} />
+  //         </div>
+  //     </UserContext.Provider>
+  //   </BrowserRouter>
+  // );
+
+
+
   return (
     <BrowserRouter>
-      <UserContext.Provider value={{currentUser, setCurrentUser }}>
-          <div className="App">
-            <NavBar logout={logout} />
-            <AppRoutes login={login} 
-                        signup={signup} 
-                        authenticated={authenticated} />
-          </div>
+      <UserContext.Provider value={{ currentUser, setCurrentUser }}>
+        <div className="App">
+          {showLoadUpPage ? (
+            <LoadUpPage onVideoEnd={handleVideoEnd} />
+          ) : (
+            <>
+              <NavBar logout={logout} />
+              <AppRoutes login={login} signup={signup} authenticated={authenticated} />
+            </>
+          )}
+        </div>
       </UserContext.Provider>
     </BrowserRouter>
   );

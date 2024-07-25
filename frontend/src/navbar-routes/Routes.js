@@ -7,6 +7,7 @@ import SignupForm from "../authentication/SignUpForm";
 import DCF from "../financial-analysis/DCF";
 import StockPriceFetcher from "../financial-analysis/StockPriceFetcher";
 import ForexDataFetcher from "../financial-analysis/ForexDataFetcher";
+import ModernHomePage from "../homepage/ModernHomePage";
 
 function AppRoutes({ login, signup, authenticated, searchResults, fetchStocks, scrapeAndProcess }) { 
     console.debug(
@@ -27,7 +28,7 @@ function AppRoutes({ login, signup, authenticated, searchResults, fetchStocks, s
     return (
         <Routes>
             {/* Unauthorized routes */}
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<ModernHomePage/>} />
             <Route path="/login" element={<LogInForm login={login} />} />
             <Route path="/signup" element={<SignupForm signup={signup} />} />
             <Route path="/dcf" element={<DCF />} />

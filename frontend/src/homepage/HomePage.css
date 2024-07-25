@@ -1,6 +1,6 @@
 .container{
     /* background-image: url(/src/images/StockBackground1.avif); */
-    
+    background-color:#16071b;
     background-size:cover;
     background-repeat: no-repeat; 
     display: flex;

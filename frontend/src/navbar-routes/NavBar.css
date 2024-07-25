@@ -17,6 +17,7 @@ body {
     color: #333;
     text-decoration: none;
     font-size: 20px;
+    font-family: 'Neue Machina';
     transition: color 0.3s ease;
   }
   
@@ -26,6 +27,7 @@ body {
   
   .navbar-brand {
     font-size: 30px;
+    font-family: 'Neue Machina';
     font-weight: bold;
     color: #262525;
     text-decoration: none;
@@ -33,9 +35,8 @@ body {
   }
   
   .Navigation {
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-bottom: 1px solid #dee2e6;
+    background-color: transparent; 
+    padding: 30px;
   }
   
   .dropdown {
@@ -45,7 +46,7 @@ body {
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: transparent; 
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -76,3 +77,115 @@ body {
   .navItem.logout {
     margin-left: auto; 
   } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  @font-face {
+    font-family: 'Neue Machina';
+    src: url('/public/fonts/PPNeueMachina-InktrapLight.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Neue Machina';
+    src: url('/public/fonts/PPNeueMachina-InktrapLightItalic.otf') format('opentype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Neue Machina';
+    src: url('/public/fonts/PPNeueMachina-InktrapRegular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Neue Machina';
+    src: url('/public/fonts/PPNeueMachina-InktrapRegularItalic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Neue Machina';
+    src: url('/public/fonts/PPNeueMachina-InktrapUltrabold.otf') format('opentype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Neue Machina';
+    src: url('/public/fonts/PPNeueMachina-InktrapUltraboldItalic.otf') format('opentype');
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Neue Machina';
+    src: url('/public/fonts/PPNeueMachina-PlainLight.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Neue Machina';
+    src: url('/public/fonts/PPNeueMachina-PlainLightItalic.otf') format('opentype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Neue Machina';
+    src: url('/public/fonts/PPNeueMachina-PlainRegular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Neue Machina';
+    src: url('/public/fonts/PPNeueMachina-PlainRegularItalic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Neue Machina';
+    src: url('/public/fonts/PPNeueMachina-PlainUltrabold.otf') format('opentype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Neue Machina';
+    src: url('/public/fonts/PPNeueMachina-PlainUltraboldItalic.otf') format('opentype');
+    font-weight: 800;
+    font-style: italic;
+}

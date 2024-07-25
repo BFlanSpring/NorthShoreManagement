@@ -55,12 +55,6 @@
 .enter-button:hover .text-started {
     transition: opacity 0.5s ease;
     opacity: 1;
-    text-shadow:
-    0 0 10px #56d8d1,
-    0 0 20px #56d8d1,
-    0 0 30px #56d8d1,
-    0 0 40px #56d8d1,
-    0 0 50px #56d8d1;
 }
 
 .enter-button:hover .text-elevate {

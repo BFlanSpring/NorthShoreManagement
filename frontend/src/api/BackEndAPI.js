@@ -23,22 +23,21 @@ class BackendApi {
     }
   }
 
+  // New method to fetch data from the FRED API or similar external APIs
+  static async fetchFredData(seriesId) {
+    try {
+      const response = await axios.get(`${BASE_URL}/api/fred-data`, {
+        params: { seriesId },
+      });
+      return response.data.data;
+    } catch (error) {
+      console.error('Error fetching FRED data:', error);
+      throw error;
+    }
+  }
+
+
   // Individual API routes
-
-  // static async fetchFinancialData(symbol, start, end) {
-  //   try {
-  //     const response = await axios.get(`${BASE_URL}/forex/data`, {
-  //       params: { symbol, start, end }
-  //     });
-  //     return response.data.data;
-  //   } catch (error) {
-  //     console.error('Error fetching financial data:', error);
-  //     throw error;
-  //   }
-  // }
-
-
-
  
       static async fetchFinancialData(symbol, start, end) {
         try {
@@ -55,8 +54,6 @@ class BackendApi {
         }
       }
   
-
-
 
   /** Scraping function */
 

@@ -8,6 +8,7 @@ import DCF from "../financial-analysis/DCF";
 import StockPriceFetcher from "../financial-analysis/StockPriceFetcher";
 import ForexDataFetcher from "../financial-analysis/ForexDataFetcher";
 import ModernHomePage from "../homepage/ModernHomePage";
+import PhillipsCurveGraph from "../phillips-curves/PhillipsCurveGraph";
 
 function AppRoutes({ login, signup, authenticated, searchResults, fetchStocks, scrapeAndProcess }) { 
     console.debug(
@@ -32,8 +33,9 @@ function AppRoutes({ login, signup, authenticated, searchResults, fetchStocks, s
             <Route path="/login" element={<LogInForm login={login} />} />
             <Route path="/signup" element={<SignupForm signup={signup} />} />
             <Route path="/dcf" element={<DCF />} />
-            <Route path="/stock-price" element={<StockPriceFetcher />} /> {/* Add this route */}
+            <Route path="/stock-price" element={<StockPriceFetcher />} /> 
             <Route path="/forex" element={<ForexDataFetcher/>} />
+            <Route path="/phillips-curve" element = {<PhillipsCurveGraph/>} />
             {/* Authorized routes */}
             <Route 
                 path="/profile" 

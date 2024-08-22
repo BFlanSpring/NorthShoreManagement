@@ -55,6 +55,8 @@ const scrapeRoutes = require("./routes/scrape");
 const forexRoutes = require("./routes/forex"); // Add the new route
 const morgan = require("morgan");
 
+const fredRoutes = require('./routes/fredApi');
+
 const app = express();
 
 app.use(cors());
@@ -65,7 +67,8 @@ app.use(authenticateJWT);
 app.use("/auth", authRoutes);
 app.use("/users", usersRoutes);
 app.use("/scrape", scrapeRoutes);
-app.use("/forex", forexRoutes); // Add the new route
+app.use("/forex", forexRoutes);
+app.use('/api', fredRoutes);
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));

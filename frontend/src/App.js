@@ -96,34 +96,12 @@ function App() {
 
 /* ----------------------------------------------------------------*/
 
-
-  // return (
-  //   <BrowserRouter>
-  //     <UserContext.Provider value={{currentUser, setCurrentUser }}>
-  //         <div className="App">
-  //           <NavBar logout={logout} />
-  //           <AppRoutes login={login} 
-  //                       signup={signup} 
-  //                       authenticated={authenticated} />
-  //         </div>
-  //     </UserContext.Provider>
-  //   </BrowserRouter>
-  // );
-
-
-
   return (
     <BrowserRouter>
       <UserContext.Provider value={{ currentUser, setCurrentUser }}>
         <div className="App">
-          {showLoadUpPage ? (
-            <LoadUpPage onVideoEnd={handleVideoEnd} />
-          ) : (
-            <>
               <NavBar logout={logout} />
               <AppRoutes login={login} signup={signup} authenticated={authenticated} />
-            </>
-          )}
         </div>
       </UserContext.Provider>
     </BrowserRouter>
@@ -131,3 +109,27 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+// return (
+//   <BrowserRouter>
+//     <UserContext.Provider value={{ currentUser, setCurrentUser }}>
+//       <div className="App">
+//         {showLoadUpPage ? (
+//           <LoadUpPage onVideoEnd={handleVideoEnd} />
+//         ) : (
+//           <>
+//             <NavBar logout={logout} />
+//             <AppRoutes login={login} signup={signup} authenticated={authenticated} />
+//           </>
+//         )}
+//       </div>
+//     </UserContext.Provider>
+//   </BrowserRouter>
+// );
+// }
+
+// export default App;
